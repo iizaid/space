@@ -1572,14 +1572,31 @@ button {
     gap: 44px;
   }
 
-  .product-track {
+  .carousel-edge,
+  .testimonial-arrow {
+    display: none;
+  }
+
+  .product-track,
+  .testimonial-track {
     display: flex;
-    overflow: hidden;
-    padding: 32px 4px 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 24px;
+    padding-top: 10px;
+  }
+
+  .product-track::-webkit-scrollbar,
+  .testimonial-track::-webkit-scrollbar {
+    display: none;
   }
 
   .product-card {
-    flex: 0 0 42%;
+    flex: 0 0 55%;
+    scroll-snap-align: center;
+    margin-right: 18px;
   }
 
   .product-card--active,
@@ -1587,20 +1604,15 @@ button {
     transform: none;
   }
 
-  .testimonial-track {
-    display: flex;
-    gap: 18px;
-    overflow: hidden;
-    padding: 34px 12px;
-  }
-
   .testimonial-card,
   .testimonial-card:first-child,
   .testimonial-card:last-child,
   .testimonial-card--active {
     min-height: 420px;
-    flex: 0 0 48%;
+    flex: 0 0 65%;
+    scroll-snap-align: center;
     transform: none;
+    margin-right: 20px;
   }
 
   .footer-main {
@@ -1621,7 +1633,7 @@ button {
   }
 
   .section-heading {
-    font-size: 4rem;
+    font-size: 3.4rem;
   }
 
   .section-copy {
@@ -1647,7 +1659,7 @@ button {
   }
 
   .hero__title {
-    font-size: 5rem;
+    font-size: 4.2rem;
   }
 
   .hero__eyebrow {
@@ -1690,15 +1702,16 @@ button {
   }
 
   .hero__plate {
-    top: -90px;
-    width: 760px;
-    max-width: none;
+    top: -40px;
+    width: 130%;
+    max-width: 600px;
   }
 
   .opening-card {
-    width: min(345px, calc(100vw - 40px));
+    width: calc(100% - 32px);
     gap: 16px;
-    padding: 22px;
+    padding: 18px 20px;
+    border-radius: 16px;
   }
 
   .opening-card__icon {
@@ -1711,7 +1724,7 @@ button {
   }
 
   .experience__heading {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 
   .feature-card {
@@ -1753,6 +1766,13 @@ button {
   .tabs {
     border-radius: 20px;
     padding-right: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tabs button {
+    scroll-snap-align: center;
   }
 
   .tabs__arrows {
@@ -1760,24 +1780,11 @@ button {
   }
 
   .product-card {
-    flex-basis: 82%;
+    flex: 0 0 85%;
   }
 
   .product-card__image {
     height: 270px;
-  }
-
-  .carousel-edge {
-    width: 48px;
-    height: 48px;
-  }
-
-  .carousel-edge--left {
-    left: -8px;
-  }
-
-  .carousel-edge--right {
-    right: -8px;
   }
 
   .info-card-grid {
@@ -1817,21 +1824,8 @@ button {
   .testimonial-card:first-child,
   .testimonial-card:last-child,
   .testimonial-card--active {
-    flex-basis: 86%;
+    flex: 0 0 88%;
     padding: 42px 32px;
-  }
-
-  .testimonial-arrow {
-    width: 50px;
-    height: 50px;
-  }
-
-  .testimonial-arrow--left {
-    left: -6px;
-  }
-
-  .testimonial-arrow--right {
-    right: -6px;
   }
 
   .footer {
@@ -1843,7 +1837,7 @@ button {
   }
 
   .footer-cta h2 {
-    font-size: 3.4rem;
+    font-size: 3rem;
   }
 
   .footer-bottom {
@@ -1855,19 +1849,20 @@ button {
 
 @media (max-width: 480px) {
   .section-heading {
-    font-size: 3.35rem;
+    font-size: 2.8rem;
   }
 
   .hero__title {
-    font-size: 4.35rem;
+    font-size: 3.5rem;
   }
 
   .hero__media {
-    min-height: 360px;
+    min-height: 320px;
   }
 
   .hero__plate {
-    width: 660px;
+    width: 150%;
+    max-width: 500px;
   }
 
   .opening-card {
@@ -1879,11 +1874,11 @@ button {
   }
 
   .experience__heading {
-    font-size: 2.55rem;
+    font-size: 2.4rem;
   }
 
   .product-card {
-    flex-basis: 88%;
+    flex: 0 0 90%;
   }
 
   .product-card__body {
