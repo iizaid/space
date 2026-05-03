@@ -1483,7 +1483,7 @@ button {
   .navbar {
     width: min(calc(100% - 42px), 900px);
     grid-template-columns: 1fr auto;
-    padding: 10px 14px 10px 0;
+    padding: 10px 14px 10px 20px;
   }
 
   .navbar__links,
@@ -1608,11 +1608,12 @@ button {
   .testimonial-card:first-child,
   .testimonial-card:last-child,
   .testimonial-card--active {
-    min-height: 420px;
+    min-height: auto;
     flex: 0 0 65%;
     scroll-snap-align: center;
     transform: none;
     margin-right: 20px;
+    overflow: hidden;
   }
 
   .footer-main {
@@ -1629,53 +1630,71 @@ button {
 
 @media (max-width: 760px) {
   .site-container {
-    width: min(calc(100% - 28px), 620px);
+    width: calc(100% - 32px);
+    max-width: 620px;
+  }
+
+  .section {
+    overflow: hidden;
   }
 
   .section-heading {
-    font-size: 3.4rem;
+    font-size: 3.2rem;
+    word-break: break-word;
   }
 
   .section-copy {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.75;
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
 
   .brand-mark {
-    width: 156px;
+    width: 140px;
   }
 
   .navbar {
-    top: 14px;
-    width: min(calc(100% - 28px), 620px);
+    top: 12px;
+    width: calc(100% - 24px);
+    max-width: 620px;
+    padding: 8px 12px 8px 16px;
+    border-radius: 20px;
   }
 
   .navbar__brand .brand-mark {
-    width: 164px;
+    width: 130px;
+  }
+
+  .navbar__menu-button {
+    width: 42px;
+    height: 42px;
   }
 
   .hero {
-    padding: 108px 0 40px;
+    padding: 100px 0 32px;
   }
 
   .hero__title {
-    font-size: 4.2rem;
+    font-size: 3.8rem;
   }
 
   .hero__eyebrow {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     line-height: 1.7;
+    margin-bottom: 18px;
   }
 
   .hero__text {
-    max-width: 330px;
+    max-width: 100%;
+    font-size: 1.05rem;
   }
 
   .hero__buttons,
   .signature-header__buttons,
   .location-actions,
   .footer-cta__actions {
-    gap: 14px;
+    gap: 12px;
   }
 
   .hero__buttons {
@@ -1684,63 +1703,93 @@ button {
   }
 
   .hero__buttons .ui-button {
-    width: min(100%, 280px);
+    width: 100%;
+    max-width: 280px;
   }
 
   .ui-button {
-    min-height: 52px;
-    padding-inline: 24px;
-    font-size: 0.92rem;
+    min-height: 50px;
+    padding-inline: 22px;
+    font-size: 0.9rem;
   }
 
   .scroll-indicator {
-    margin-top: 38px;
+    margin-top: 32px;
   }
 
   .hero__media {
-    min-height: 380px;
+    min-height: auto;
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
   }
 
   .hero__plate {
-    top: -40px;
-    width: 130%;
-    max-width: 600px;
+    position: relative;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    right: auto;
+    transform: none;
+    filter: drop-shadow(0 18px 28px rgba(31, 58, 45, 0.12));
   }
 
   .opening-card {
-    width: calc(100% - 32px);
-    gap: 16px;
-    padding: 18px 20px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    width: 100%;
+    gap: 14px;
+    padding: 16px 18px;
     border-radius: 16px;
+    margin-top: -20px;
+    z-index: 5;
   }
 
   .opening-card__icon {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
   }
 
   .opening-card strong {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .opening-card p {
+    font-size: 0.72rem;
   }
 
   .experience__heading {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
   }
 
   .feature-card {
     align-items: flex-start;
+    padding: 12px 14px;
+  }
+
+  .feature-card__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .feature-stack {
+    max-width: 100%;
   }
 
   .experience__collage {
     min-height: 0;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
+    gap: 10px;
   }
 
   .collage-card--main {
     grid-column: 1 / -1;
     grid-row: auto;
-    min-height: 430px;
+    min-height: 300px;
   }
 
   .collage-card--sign,
@@ -1748,7 +1797,7 @@ button {
   .collage-card--food {
     grid-column: auto;
     grid-row: auto;
-    min-height: 220px;
+    min-height: 180px;
     margin: 0;
   }
 
@@ -1763,110 +1812,308 @@ button {
     display: none;
   }
 
+  /* Tabs on mobile */
   .tabs {
-    border-radius: 20px;
-    padding-right: 18px;
+    border-radius: 18px;
+    padding: 8px 14px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    min-height: 68px;
   }
 
   .tabs button {
     scroll-snap-align: center;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+  }
+
+  .tabs button.active span {
+    width: 36px;
+    height: 36px;
   }
 
   .tabs__arrows {
     display: none;
   }
 
+  .tabs__indicator {
+    height: 2px;
+  }
+
+  /* Product cards on mobile */
   .product-card {
-    flex: 0 0 85%;
+    flex: 0 0 78%;
   }
 
   .product-card__image {
-    height: 270px;
+    height: 240px;
   }
 
+  .product-card__body {
+    min-height: auto;
+    padding: 18px 16px 16px;
+  }
+
+  .product-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .product-card p {
+    min-height: auto;
+    font-size: 0.85rem;
+    margin: 10px auto 14px;
+  }
+
+  /* Info cards */
   .info-card-grid {
     grid-template-columns: 1fr;
   }
 
+  .info-card {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .info-card h3 {
+    font-size: 1.6rem;
+  }
+
+  /* Map */
   .map-preview {
-    min-height: 460px;
-    border-radius: 24px;
+    min-height: 400px;
+    border-radius: 20px;
   }
 
   .map-preview__iframe {
-    border-radius: 24px;
+    border-radius: 20px;
   }
 
   .map-preview__header {
-    top: 14px;
-    left: 14px;
-    padding: 10px 16px 10px 12px;
-    border-radius: 12px;
+    top: 12px;
+    left: 12px;
+    padding: 8px 14px 8px 10px;
+    border-radius: 10px;
+  }
+
+  .map-preview__pin {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+  }
+
+  .map-preview__label {
+    font-size: 0.82rem;
+  }
+
+  /* Testimonials on mobile - critical fix */
+  .testimonials-section {
+    overflow: hidden;
+  }
+
+  .testimonials-grid {
+    gap: 32px;
   }
 
   .testimonials-copy .section-heading {
-    max-width: 420px;
+    max-width: 100%;
+    font-size: 3rem;
   }
 
   .rating-card {
-    padding: 26px;
+    max-width: 100%;
+    padding: 22px 20px;
+    gap: 20px;
+  }
+
+  .rating-card__icon {
+    width: 68px;
+    height: 68px;
+    flex: 0 0 68px;
+  }
+
+  .rating-card strong {
+    font-size: 2.4rem;
   }
 
   .testimonial-carousel {
     min-height: auto;
     padding-top: 0;
+    overflow: hidden;
+  }
+
+  .testimonial-track {
+    padding: 16px 4px 24px;
   }
 
   .testimonial-card,
   .testimonial-card:first-child,
   .testimonial-card:last-child,
   .testimonial-card--active {
-    flex: 0 0 88%;
-    padding: 42px 32px;
+    flex: 0 0 calc(100vw - 64px);
+    max-width: calc(100vw - 64px);
+    min-height: auto;
+    padding: 32px 24px 28px;
+    margin-right: 16px;
+    overflow: hidden;
+    transform: none !important;
   }
 
+  .testimonial-card--active {
+    transform: none !important;
+  }
+
+  .testimonial-card__avatar {
+    width: 68px;
+    height: 68px;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+
+  .testimonial-card h3 {
+    font-size: 1.6rem;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .testimonial-card__meta {
+    font-size: 0.85rem;
+    margin: 4px 0 16px;
+  }
+
+  .testimonial-card__stars {
+    gap: 5px;
+  }
+
+  .testimonial-card__line {
+    margin: 18px auto 14px;
+  }
+
+  .testimonial-card__review {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .testimonial-card--active .testimonial-card__review {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .testimonial-card__quote {
+    font-size: 3.5rem;
+    bottom: 6px;
+  }
+
+  .testimonial-dots {
+    margin-top: 16px;
+  }
+
+  .pagination-dots button {
+    width: 14px;
+    height: 5px;
+  }
+
+  .pagination-dots button.active {
+    width: 24px;
+  }
+
+  /* Footer on mobile */
   .footer {
-    padding-top: 36px;
+    padding-top: 32px;
+  }
+
+  .footer::before,
+  .footer::after {
+    display: none;
   }
 
   .footer-cta {
-    padding: 34px 26px;
+    padding: 28px 22px;
+    border-radius: 18px;
   }
 
   .footer-cta h2 {
-    font-size: 3rem;
+    font-size: 2.6rem;
+  }
+
+  .footer-cta p {
+    font-size: 0.95rem;
+  }
+
+  .footer-cta__arcs {
+    width: 200px;
+    top: -30px;
+    right: -25px;
+  }
+
+  .footer-cta__actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-main {
+    padding: 48px 0 32px;
+  }
+
+  .footer-brand .brand-mark {
+    width: 180px;
+  }
+
+  .footer-brand p {
+    font-size: 0.92rem;
+    margin: 24px 0 24px;
+  }
+
+  .social-links a {
+    width: 48px;
+    height: 48px;
+  }
+
+  .footer-links h3,
+  .footer-visit h3 {
+    font-size: 2rem;
+  }
+
+  .footer-links a {
+    max-width: 100%;
+    padding: 14px 0;
+  }
+
+  .visit-card {
+    padding: 14px 20px;
+  }
+
+  .visit-card p,
+  .visit-card a {
+    gap: 14px;
+    padding: 14px 0;
+    font-size: 0.92rem;
   }
 
   .footer-bottom {
     display: grid;
-    gap: 16px;
+    gap: 14px;
     padding-inline: 0;
+    padding-bottom: 28px;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
   .section-heading {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
   }
 
   .hero__title {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
   }
 
   .hero__media {
-    min-height: 320px;
-  }
-
-  .hero__plate {
-    width: 150%;
-    max-width: 500px;
-  }
-
-  .opening-card {
-    bottom: 0;
+    min-height: 280px;
   }
 
   .ui-button {
@@ -1874,23 +2121,56 @@ button {
   }
 
   .experience__heading {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
   }
 
   .product-card {
-    flex: 0 0 90%;
+    flex: 0 0 85%;
   }
 
   .product-card__body {
-    padding-inline: 18px;
+    padding-inline: 14px;
   }
 
   .map-preview {
-    min-height: 360px;
+    min-height: 320px;
   }
 
   .footer-brand .brand-mark {
-    width: 220px;
+    width: 160px;
+  }
+
+  .testimonial-card,
+  .testimonial-card:first-child,
+  .testimonial-card:last-child,
+  .testimonial-card--active {
+    flex: 0 0 calc(100vw - 48px);
+    max-width: calc(100vw - 48px);
+    padding: 28px 20px 24px;
+  }
+
+  .testimonial-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .testimonial-card__avatar {
+    width: 58px;
+    height: 58px;
+    font-size: 1.3rem;
+  }
+
+  .footer-cta h2 {
+    font-size: 2.2rem;
+  }
+
+  .rating-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 18px;
+  }
+
+  .rating-card__icon {
+    margin: 0 auto;
   }
 }
 
